@@ -23,9 +23,9 @@ class FieldElement:
 
     def __ne__(self, other):
         # this should be the inverse of the == operator
-        if isinstance(other, FieldElement):
-            return self.num != other.num or self.prime != other.prime
-        raise NotImplementedError
+        if other is None:
+            return True
+        return self.num != other.num or self.prime != other.prime
 
 
     # tag::source2[]
