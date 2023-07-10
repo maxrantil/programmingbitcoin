@@ -278,9 +278,6 @@ class ECCTest(TestCase):
         # (192,105) + (17,56)
         # (47,71) + (117,141)
         # (143,98) + (76,66)
-        prime = 223
-        a = FieldElement(0, prime)
-        b = FieldElement(7, prime)
 
         additions = (
             # (x1, y1, x2, y2, x3, y3)
@@ -296,15 +293,19 @@ class ECCTest(TestCase):
         def add_points(x1, y1, x2, y2, x3, y3, prime=223):
             a = FieldElement(0, prime)
             b = FieldElement(7, prime)
+            
             x1 = FieldElement(num=x1, prime=prime)
             y1 = FieldElement(num=y1, prime=prime)
+            p1 = Point(x1, y1, a, b)
+
             x2 = FieldElement(num=x2, prime=prime)
             y2 = FieldElement(num=y2, prime=prime)
+            p2 = Point(x2, y2, a, b)
+
             x3 = FieldElement(num=x3, prime=prime)
             y3 = FieldElement(num=y3, prime=prime)
-            p1 = Point(x1, y1, a, b)
-            p2 = Point(x2, y2, a, b)
             p3 = Point(x3, y3, a, b)
+            
             self.assertEqual(p1 + p2, p3)
    
         for addition in additions:
