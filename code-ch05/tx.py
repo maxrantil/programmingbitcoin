@@ -110,13 +110,14 @@ class Tx:
         '''
         # s.read(n) will return n bytes
         # version is an integer in 4 bytes, little-endian
+        version = little_endian_to_int(s.read(4))
+        return cls(version, None, None, None, testnet=testnet)
         # num_inputs is a varint, use read_varint(s)
         # parse num_inputs number of TxIns
         # num_outputs is a varint, use read_varint(s)
         # parse num_outputs number of TxOuts
         # locktime is an integer in 4 bytes, little-endian
         # return an instance of the class (see __init__ for args)
-        raise NotImplementedError
 
     # tag::source6[]
     def serialize(self):
