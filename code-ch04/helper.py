@@ -72,7 +72,6 @@ def int_to_little_endian(n, length):
     byte sequence of length'''
     # use n.to_bytes()
     return n.to_bytes(length, byteorder ='little')
-#     return n.to_bytes(length, byteorder='little')
 
 
 class HelperTest(TestCase):
